@@ -21,3 +21,13 @@ function SCHEMA:EntityEmitSound(data)
         return true
     end
 end
+
+local combineDoorModels = {
+    ["models/props_combine/combine_door01.mdl"] = true,
+    ["models/combine_gate_vehicle.mdl"] = true,
+    ["models/combine_gate_citizen.mdl"] = true,
+}
+
+function SCHEMA:IsEntityDoor(entity, class)
+    return class == "prop_dynamic" and combineDoorModels[entity:GetModel()]
+end
