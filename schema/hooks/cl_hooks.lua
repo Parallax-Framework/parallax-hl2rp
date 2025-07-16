@@ -9,7 +9,7 @@ color["$pp_colour_mulr"] = 0
 color["$pp_colour_mulg"] = 0
 color["$pp_colour_mulb"] = 0
 
-local combineOverlay = Material("effects/combine_binocoverlay")
+local combineOverlay = ax.util:GetMaterial("effects/combine_binocoverlay")
 function SCHEMA:RenderScreenspaceEffects()
     DrawColorModify(color)
 

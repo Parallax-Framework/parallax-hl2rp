@@ -29,5 +29,5 @@ local combineDoorModels = {
 }
 
 function SCHEMA:IsEntityDoor(entity, class)
-    return class == "prop_dynamic" and combineDoorModels[entity:GetModel()]
+    return class == "prop_dynamic" and combineDoorModels[string.lower(entity:GetModel())]
 end
