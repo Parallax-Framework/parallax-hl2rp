@@ -1,11 +1,10 @@
-local FACTION = ax.faction:Instance()
-FACTION:SetName("City Administration")
-FACTION:SetDescription("The public face of Combine rule, spearheaded by the City Administrator and loyal aides. They disseminate propaganda, manage quotas and coordinate with Civil Protection.")
-FACTION:SetColor(Color(125, 60, 160))
+FACTION.name = "City Administration"
+FACTION.description = "The public face of Combine rule, spearheaded by the City Administrator and loyal aides. They disseminate propaganda, manage quotas and coordinate with Civil Protection."
+FACTION.color = Color(125, 60, 160)
 
-FACTION.Image = ax.util:GetMaterial("gamepadui/hl2/chapter7")
+FACTION.image = ax.util:GetMaterial("gamepadui/hl2/chapter7")
 
-FACTION:SetModels({
+FACTION.models = {
     "models/humans/group17/male_01.mdl",
     "models/humans/group17/male_02.mdl",
     "models/humans/group17/male_03.mdl",
@@ -20,6 +19,6 @@ FACTION:SetModels({
     "models/humans/group17/female_03.mdl",
     "models/humans/group17/female_04.mdl",
     "models/humans/group17/female_06.mdl"
-})
+}
 
-FACTION_ADMIN = FACTION:Register()
+FACTION_ADMIN = FACTION.index

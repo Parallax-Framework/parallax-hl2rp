@@ -1,12 +1,11 @@
-local FACTION = ax.faction:Instance()
-FACTION:SetName("Citizen")
-FACTION:SetDescription("Ordinary humans trying to survive under the Universal Union’s occupation. They queue for rations, heed curfews, and cling to rumours of freedom.")
-FACTION:SetColor(Color(150, 150, 150))
-FACTION:MakeDefault()
+FACTION.name = "Citizen"
+FACTION.description = "Ordinary humans trying to survive under the Universal Union’s occupation. They queue for rations, heed curfews, and cling to rumours of freedom."
+FACTION.color = Color(150, 150, 150)
+FACTION.isDefault = true
 
-FACTION.Image = ax.util:GetMaterial("gamepadui/hl2/chapter1")
+FACTION.image = ax.util:GetMaterial("gamepadui/hl2/chapter1")
 
-FACTION:SetModels({
+FACTION.models = {
     "models/humans/group01/male_01.mdl",
     "models/humans/group01/male_02.mdl",
     "models/humans/group01/male_03.mdl",
@@ -21,6 +20,6 @@ FACTION:SetModels({
     "models/humans/group01/female_03.mdl",
     "models/humans/group01/female_04.mdl",
     "models/humans/group01/female_06.mdl"
-})
+}
 
-FACTION_CITIZEN = FACTION:Register()
+FACTION_CITIZEN = FACTION.index

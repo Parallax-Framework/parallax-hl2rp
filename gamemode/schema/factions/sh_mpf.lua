@@ -1,13 +1,12 @@
-local FACTION = ax.faction:Instance()
-FACTION:SetName("Metropolice Force")
-FACTION:SetDescription("Implanted human collaborators who police the urban zones for the Combine. They impose curfews, break up dissent and suppress resistance with lethal efficiency.")
-FACTION:SetColor(Color(45, 90, 140))
+FACTION.name = "Metropolice Force"
+FACTION.description = "Implanted human collaborators who police the urban zones for the Combine. They impose curfews, break up dissent and suppress resistance with lethal efficiency."
+FACTION.color = Color(45, 90, 140)
 
-FACTION.Image = ax.util:GetMaterial("gamepadui/hl2/chapter3")
+FACTION.image = ax.util:GetMaterial("gamepadui/hl2/chapter3")
 
-FACTION:SetModels({
+FACTION.models = {
     "models/police.mdl"
-})
+}
 
 FACTION.AllowNonAscii = true
 
@@ -32,7 +31,7 @@ function FACTION:GetDefaultName(client)
     return "MPF:" .. ax.config:Get("city.abbreviation") .. "-" .. self.Taglines[math.random(#self.Taglines)] .. "-" .. ax.util:ZeroNumber(math.random(1, 9999), 4), true
 end
 
-FACTION_MPF = FACTION:Register()
+FACTION_MPF = FACTION.index
 
 ax.animations:SetModelClass("models/police.mdl", "metrocop")
 ax.animations:SetModelClass("models/police/eliteghostcp.mdl", "metrocop")

@@ -1,11 +1,10 @@
-local FACTION = ax.faction:Instance()
-FACTION:SetName("Civil Workers’ Union")
-FACTION:SetDescription("A Combine-sanctioned labour guild that staffs factories, clinics and ration dispensaries. In return for loyalty it gains modest privileges and extra food tokens.")
-FACTION:SetColor(Color(200, 120, 30))
+FACTION.name = "Civil Workers’ Union"
+FACTION.description = "A Combine-sanctioned labour guild that staffs factories, clinics and ration dispensaries. In return for loyalty it gains modest privileges and extra food tokens."
+FACTION.color = Color(200, 120, 30)
 
-FACTION.Image = ax.util:GetMaterial("gamepadui/hl2/chapter2")
+FACTION.image = ax.util:GetMaterial("gamepadui/hl2/chapter2")
 
-FACTION:SetModels({
+FACTION.models = {
     "models/humans/group02/male_01.mdl",
     "models/humans/group02/male_02.mdl",
     "models/humans/group02/male_03.mdl",
@@ -20,6 +19,6 @@ FACTION:SetModels({
     "models/humans/group02/female_03.mdl",
     "models/humans/group02/female_04.mdl",
     "models/humans/group02/female_06.mdl"
-})
+}
 
-FACTION_CWU = FACTION:Register()
+FACTION_CWU = FACTION.index
