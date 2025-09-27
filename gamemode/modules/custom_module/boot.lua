@@ -1,8 +1,8 @@
 local MODULE = MODULE
 
-MODULE.name = "Custom Module"
-MODULE.description = "Adds custom functionality to the HL2RP schema."
-MODULE.author = "YourName"
+MODULE.Name = "Custom Module"
+MODULE.Description = "Adds custom functionality to the HL2RP schema."
+MODULE.Author = "YourName"
 
 function MODULE:PostInitializeModule()
     ax.util:Print("Custom Module has been loaded.")
