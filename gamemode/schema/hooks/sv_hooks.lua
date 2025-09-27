@@ -24,9 +24,8 @@ end
 
 function SCHEMA:PlayerUse(client, entity)
     local isAdminFaction = client:Team() == FACTION_ADMIN
-    if ( client:IsCombine() or isAdminFaction and entity:GetClass() == "func_door" and !entity:OnCooldown("Use") and ( !entity:HasSpawnFlags(256) and !entity:HasSpawnFlags(1024) ) ) then
+    if ( client:IsCombine() or isAdminFaction and entity:GetClass() == "func_door" and !entity:RateLimit("Use", 1) and ( !entity:HasSpawnFlags(256) and !entity:HasSpawnFlags(1024) ) ) then
         entity:Fire("Open", "", 0)
-        entity:SetCooldown("Use", 1)
         entity:EmitSound("buttons/combine_button1.wav", 70, 100, 0.5, CHAN_AUTO)
     end
 end
