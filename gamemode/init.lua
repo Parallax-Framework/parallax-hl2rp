@@ -1,2 +1,10 @@
 AddCSLuaFile("cl_init.lua")
 DeriveGamemode("parallax")
+
+resource.AddFile("materials/parallax/hl2rp/banners/admin.png")
+resource.AddFile("materials/parallax/hl2rp/banners/citizen.png")
+resource.AddFile("materials/parallax/hl2rp/banners/cwu.png")
+resource.AddFile("materials/parallax/hl2rp/banners/mpf.png")
+resource.AddFile("materials/parallax/hl2rp/banners/ota.png")
+resource.AddFile("materials/parallax/hl2rp/banners/resistance.png")
+resource.AddFile("materials/parallax/hl2rp/banners/vortigaunt.png")
