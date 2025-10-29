@@ -12,9 +12,9 @@
 local localization = {}
 
 localization["hl2rp"] = "Half-Life 2 Roleplay"
-localization["hl2rp.city.abbreviation"] = "City Abbreviation"
-localization["hl2rp.city.abbreviation.description"] = "The abbreviation for the city, used in character names and tags."
-localization["hl2rp.city.name"] = "City Name"
-localization["hl2rp.city.name.description"] = "The name of the city."
+localization["cityAbbreviation"] = "City Abbreviation"
+localization["cityAbbreviationDescription"] = "The abbreviation for the city, used in character names and tags."
+localization["cityName"] = "City Name"
+localization["cityNameDescription"] = "The name of the city."
 
 ax.localization:Register("en", localization)
