@@ -13,6 +13,8 @@ function SCHEMA:PlayerFootstep(client, position, foot, soundName, volume)
 end
 
 function SCHEMA:PostPlayerLoadout(client)
+    client:SetCanZoom(client:IsCombine())
+
     if ( client:IsCombine() ) then
         if ( client:Team() == FACTION_MPF ) then
             client:SetArmor(50)
@@ -23,8 +25,10 @@ function SCHEMA:PostPlayerLoadout(client)
 end
 
 function SCHEMA:PlayerUse(client, entity)
+    if ( !IsValid(entity) or !entity:RateLimit("use", 1) ) then return end
+
     local isAdminFaction = client:Team() == FACTION_ADMIN
-    if ( client:IsCombine() or isAdminFaction and entity:GetClass() == "func_door" and !entity:RateLimit("Use", 1) and ( !entity:HasSpawnFlags(256) and !entity:HasSpawnFlags(1024) ) ) then
+    if ( ( client:IsCombine() or isAdminFaction ) and entity:GetClass() == "func_door" and ( !entity:HasSpawnFlags(256) and !entity:HasSpawnFlags(1024) ) ) then
         entity:Fire("Open", "", 0)
         entity:EmitSound("buttons/combine_button1.wav", 70, 100, 0.5, CHAN_AUTO)
     end
