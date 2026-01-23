@@ -12,6 +12,9 @@ color["$pp_colour_mulb"] = 0
 local combineOverlay = ax.util:GetMaterial("effects/combine_binocoverlay")
 function SCHEMA:RenderScreenspaceEffects()
     local client = ax.client
+    local character = client:GetCharacter()
+    if ( !character ) then return end
+    
     local health, healthMax = client:Health(), client:GetMaxHealth()
     local healthFraction = math.Clamp(health / healthMax, 0, 1)
     local healthFractionInv = 1 - healthFraction
