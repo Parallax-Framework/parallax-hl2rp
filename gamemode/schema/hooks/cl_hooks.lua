@@ -23,7 +23,9 @@ function SCHEMA:RenderScreenspaceEffects()
     color["$pp_colour_contrast"] = 1.25 - (0.5 * healthFractionInv)
     color["$pp_colour_colour"] = 0.75 * healthFraction
 
-    DrawColorModify(color)
+    if ( ax.config:Get("colorModifcation") ) then
+        DrawColorModify(color)
+    end
 
     if ( client:IsCombine() ) then
         render.UpdateScreenEffectTexture()
