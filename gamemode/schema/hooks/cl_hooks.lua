@@ -71,9 +71,11 @@ local function addIdleMessage()
     end
 
     local availableMessages = {}
-    for _, msg in ipairs(idleMessages) do
+    for _ = 1, #idleMessages do
+        local msg = idleMessages[_]
         local alreadyExists = false
-        for _, storedMsg in ipairs(storedMessages) do
+        for _ = 1, #storedMessages do
+            local storedMsg = storedMessages[_]
             if ( storedMsg.message == msg ) then
                 alreadyExists = true
                 break
@@ -81,12 +83,12 @@ local function addIdleMessage()
         end
 
         if ( !alreadyExists ) then
-            table.insert(availableMessages, msg)
+            availableMessages[#availableMessages + 1] = msg
         end
     end
 
     local message = availableMessages[math.random(#availableMessages)]
-    table.insert(storedMessages, { message = message, color = Color(0, 0, 0, 175) })
+    storedMessages[#storedMessages + 1] = { message = message, color = Color(0, 0, 0, 175) }
 end
 
 local direction = {
@@ -191,7 +193,8 @@ function SCHEMA:HUDPaintCurvy()
     add = add + 5
 
     local selectedStatus
-    for _, status in ipairs(healthStatusMessages) do
+    for _ = 1, #healthStatusMessages do
+        local status = healthStatusMessages[_]
         if ( hp <= status.threshold and ( !selectedStatus or status.threshold < selectedStatus.threshold ) ) then
             selectedStatus = status
         end
