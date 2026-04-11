@@ -53,6 +53,21 @@ function FACTION:GetDefaultName(client)
     return "OTA:" .. ax.config:Get("cityAbbreviation") .. "-" .. self.taglines[math.random(#self.taglines)] .. "-" .. ax.util:PadNumber(math.random(9999), 4), true
 end
 
+function FACTION:OnCharacterCreated(client, character)
+    local defaultClass = 0
+    local classes = ax.class:GetAll({faction = self.index})
+    for i = 1, #classes do
+        local class = classes[i]
+        if ( class.isDefault ) then
+            defaultClass = class.index
+            break
+        end
+    end
+
+    if ( defaultClass == 0 ) then return end
+    character:SetClass(defaultClass)
+end
+
 FACTION_OTA = FACTION.index
 
 ax.animations:SetModelClass("models/combine_soldier.mdl", "overwatch")
