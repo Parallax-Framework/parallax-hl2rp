@@ -44,7 +44,7 @@ FACTION.taglines = {
 }
 
 function FACTION:GetDefaultName(client)
-    return "MPF:" .. ax.config:Get("cityAbbreviation") .. "-" .. self.taglines[math.random(#self.taglines)] .. "-" .. ax.util:PadNumber(math.random(1, 9999), 4), true
+    return "MPF:" .. ax.config:Get("cityAbbreviation") .. "-" .. self.taglines[math.random(#self.taglines)] .. "-" .. ax.util:PadNumber(math.random(9999), 4), true
 end
 
 FACTION_MPF = FACTION.index

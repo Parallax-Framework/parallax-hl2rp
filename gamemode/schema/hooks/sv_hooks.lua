@@ -1,11 +1,11 @@
 function SCHEMA:PlayerFootstep(client, position, foot, soundName, volume)
     if ( client:IsSprinting() ) then
         if ( client:Team() == FACTION_MPF ) then
-            client:EmitSound("npc/metropolice/gear" .. math.random(1, 6) .. ".wav", 80, 100, 1, CHAN_AUTO)
+            client:EmitSound("npc/metropolice/gear" .. math.random(6) .. ".wav", 80, 100, 1, CHAN_AUTO)
 
             return true
         elseif ( client:Team() == FACTION_OTA ) then
-            client:EmitSound("npc/combine_soldier/gear" .. math.random(1, 6) .. ".wav", 80, 100, 1, CHAN_AUTO)
+            client:EmitSound("npc/combine_soldier/gear" .. math.random(6) .. ".wav", 80, 100, 1, CHAN_AUTO)
 
             return true
         end
