@@ -61,7 +61,7 @@ function ENT:SetupDataTables()
     ]]
 
     if SERVER then
-        self:SetAlwaysOn( false )
+        self:SetAlwaysOn( true )
 
         self:SetDummyEnd( nil )
         self:SetDummyStart( nil )

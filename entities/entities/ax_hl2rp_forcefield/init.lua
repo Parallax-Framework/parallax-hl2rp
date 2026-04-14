@@ -27,7 +27,7 @@ function ENT:SpawnFunction(client, trace)
     entity:SetPos(snapToFloorTraceR.HitPos + upFourty)
     entity:SetAngles(angles:SnapTo("y", 45))
     entity:Spawn()
-    entity:SetName( "ax.forcefield." .. entity:GetCreationID() )
+    entity:SetName( "ax.forcefield." .. entity:GetCreationID() .. ".core" )
 
     return entity
 
@@ -220,15 +220,16 @@ function ENT:PositionsThink()
     local posProductLeng = ( dummyStart:GetPos() + dummyEnd:GetPos() ):LengthSqr()
     posProductLeng = math.Round( posProductLeng )
 
-    if self.oldPositionProductLeng and self.oldPositionProductLeng == posProductLeng then return true end
+    local selfTable = self:GetTable()
 
-    self.oldPositionProductLeng = posProductLeng
+    if selfTable.oldPositionProductLeng and selfTable.oldPositionProductLeng == posProductLeng then return true end
+
+    selfTable.oldPositionProductLeng = posProductLeng
 
     self:SetPos( dummyStart:GetPos() )
     self:SetAngles( dummyStart:GetAngles() )
 
     return false
-
 end
 
 function ENT:Think()
@@ -272,19 +273,22 @@ function ENT:Think()
 
         if tbl.shieldIsOn then
             tbl.shieldIsOn = nil
+            print("Shield turned off; broken")
             TurnOff( self )
         end
     elseif beingMoved then
         if tbl.shieldIsOn then
             tbl.shieldIsOn = nil
 
+            print("Shield off; Being moved")
             TurnOff( self )
         end
     elseif isOn and not tbl.shieldIsOn then
         tbl.shieldIsOn = true
         TurnOn( self )
-    elseif not isOn and tbl.shieldIsOn then
+    elseif ( !isOn and tbl.shieldIsOn ) then
         tbl.shieldIsOn = nil
+        print("Shield turned off; not powered")
         TurnOff( self )
     end
 
@@ -296,7 +300,7 @@ function ENT:Think()
     local redoTheShieldSound = tbl.redoTheShieldSound < CurTime()
 
     if tbl.shieldIsOn then
-        if ( tbl.field_loopingSound ) then
+        if ( !tbl.field_loopingSound ) then
             self:EmitSound( "campaign_entities/combineshield_activate.wav", 80, math.random( 95, 105 ) )
         end
 
@@ -326,8 +330,8 @@ function ENT:Think()
             tbl.redoTheShieldSound = CurTime() + math.random(10, 20)
 
         end
-    elseif not tbl.shieldIsOn then
-        if tbl.field_loopingSound then
+    elseif ( !tbl.shieldIsOn ) then
+        if ( tbl.field_loopingSound ) then
             self:EmitSound("campaign_entities/combineshield_deactivate.wav", 80, math.random( 95, 105 ))
 
             tbl.field_loopingSound:ChangeVolume(0, 0)
@@ -335,7 +339,7 @@ function ENT:Think()
             tbl.field_loopingSound = nil
         end
 
-        if tbl.field_loopingSoundDummy and IsValid( dummyEnd ) then
+        if ( tbl.field_loopingSoundDummy and IsValid(dummyEnd) ) then
             dummyEnd:EmitSound("campaign_entities/combineshield_deactivate.wav", 80, math.random( 95, 105 ))
 
             tbl.field_loopingSoundDummy:ChangeVolume(0, 0)
@@ -561,7 +565,7 @@ function ENT:UpdateShouldCollideHook()
     end
 end
 
-function TurnOff( self )
+local function TurnOff( self )
     for _, ent in ipairs( ents.FindByName( "ax.forcefield." .. self:GetCreationID() .. ".*" ) ) do -- this code smells!
         ent:SetSkin( 1 )
         util.ScreenShake( ent:GetPos(), 0.25, 10, 0.25, 1500 )
@@ -575,7 +579,7 @@ function TurnOff( self )
     end )
 end
 
-function TurnOn( self )
+local function TurnOn( self )
     for _, ent in ipairs( ents.FindByName( "ax.forcefield." .. self:GetCreationID() .. ".*" ) ) do -- this too!
         ent:SetSkin( 0 )
         util.ScreenShake( ent:GetPos(), 2, 10, 0.25, 1500 )

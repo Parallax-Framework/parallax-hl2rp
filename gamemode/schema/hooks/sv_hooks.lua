@@ -1,11 +1,11 @@
 function SCHEMA:PlayerFootstep(client, position, foot, soundName, volume)
     if ( client:IsSprinting() ) then
         if ( client:Team() == FACTION_MPF ) then
-            client:EmitSound("npc/metropolice/gear" .. math.random(6) .. ".wav", 80, 100, 1, CHAN_AUTO)
+            client:EmitSound("npc/metropolice/gear" .. math.random(6) .. ".wav", 80, 100, 1, CHAN_BODY)
 
             return true
         elseif ( client:Team() == FACTION_OTA ) then
-            client:EmitSound("npc/combine_soldier/gear" .. math.random(6) .. ".wav", 80, 100, 1, CHAN_AUTO)
+            client:EmitSound("npc/combine_soldier/gear" .. math.random(6) .. ".wav", 80, 100, 1, CHAN_BODY)
 
             return true
         end
@@ -30,7 +30,7 @@ function SCHEMA:PlayerUse(client, entity)
     local isAdminFaction = client:Team() == FACTION_ADMIN
     if ( ( client:IsCombine() or isAdminFaction ) and entity:GetClass() == "func_door" and ( !entity:HasSpawnFlags(256) and !entity:HasSpawnFlags(1024) ) ) then
         entity:Fire("Open", "", 0)
-        entity:EmitSound("buttons/combine_button1.wav", 70, 100, 0.5, CHAN_AUTO)
+        entity:EmitSound("buttons/combine_button1.wav", 70, 100, 0.5, CHAN_BODY)
     end
 end
 
