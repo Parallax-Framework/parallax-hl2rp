@@ -184,6 +184,11 @@ function SCHEMA:HUDPaintCurvy()
     draw.SimpleText("BIOSIGNAL ZONE: " .. zone .. " ::>", "BudgetLabel", x, y + textHeight * 2, nil, TEXT_ALIGN_RIGHT)
     draw.SimpleText("BIOSIGNAL GRID: " .. grid .. " ::>", "BudgetLabel", x, y + textHeight * 3, nil, TEXT_ALIGN_RIGHT)
 
+    local cityCode = self.CityCodes:Find()
+    if ( cityCode != nil ) then
+        draw.SimpleText("OVERRIDE CODE: " .. utf8.upper(cityCode.name) .. " ::>", "BudgetLabel", x, y + textHeight * 4, cityCode.color, TEXT_ALIGN_RIGHT)
+    end
+
     if ( client:Team() == FACTION_OTA ) then
         sps = true
         draw.SimpleText("SUIT PROTECTION SYSTEM CHARGE: " .. armor .. " ::>", "BudgetLabel", x, y + 80, nil, TEXT_ALIGN_RIGHT)
