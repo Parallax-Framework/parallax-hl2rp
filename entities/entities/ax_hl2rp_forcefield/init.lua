@@ -232,8 +232,8 @@ function ENT:PositionsThink()
 end
 
 function ENT:Think()
-    if self.Dead then SafeRemoveEntity( self ) return end
     local tbl = self:GetTable()
+    if tbl.Dead then SafeRemoveEntity( self ) return end
 
     local alwaysOn = tbl.GetAlwaysOn and self:GetAlwaysOn()
 
