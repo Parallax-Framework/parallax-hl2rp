@@ -33,3 +33,15 @@ function SCHEMA:IsEntityDoor(entity, class)
         return true
     end
 end
+
+function SCHEMA:CanPlayerPurchaseDoor(client, door)
+    if ( !SCHEMA:IsEntityDoor(door) ) then
+        return true
+    end
+end
+
+function SCHEMA:CanPlayerSellDoor(client, door)
+    if ( !SCHEMA:IsEntityDoor(door) ) then
+        return true
+    end
+end
