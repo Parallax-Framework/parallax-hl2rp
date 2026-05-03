@@ -3,6 +3,7 @@ name: Generate Version JSON
 on:
   push:
     branches: [ main ]
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -104,4 +105,5 @@ jobs:
         with:
           tag_name: ${{ steps.tag_version.outputs.tag }}
           name: Parallax ${{ steps.tag_version.outputs.tag }}
+          body_path: ai_notes.md
           generate_release_notes: true
